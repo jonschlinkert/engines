@@ -64,8 +64,5 @@
   },
   "bugs": {
     "url": ""
-  },
-  "dependencies": {
-    "sync": "^0.2.2"
   }
 }
