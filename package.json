@@ -1,6 +1,6 @@
 {
   "name": "engines",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Template engine library for Assemble, based on consolidate.",
   "repository": {
     "type": "git",
