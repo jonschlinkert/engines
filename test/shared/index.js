@@ -15,7 +15,8 @@ exports.test = function(name) {
 
     it('should support locals', function(done){
       var path = 'test/fixtures/' + name + '/user.' + name;
-      var locals = { user: user };
+      var str = fs.readFileSync(path).toString();
+      var locals = { user: user, str: str };
       var html = cons[name](path, locals);
       html.should.equal('<p>Tobi</p>');
       done();
@@ -23,8 +24,16 @@ exports.test = function(name) {
 
     it('should not cache by default', function(done){
       var path = 'test/fixtures/' + name + '/user.' + name;
-      var locals = { user: user };
+      var str = fs.readFileSync(path).toString();
+      var locals = { user: user, str: str };
       var calls = 0;
+      var callMap = {
+        atpl: 2,
+        toffee: 2,
+        jade: 2,
+        ect: 2
+      };
+      var expected = callMap[name] || 0;
 
       fs.readFileSync = function(){
         ++calls;
@@ -40,13 +49,14 @@ exports.test = function(name) {
       html.should.equal('<p>Tobi</p>');
       html = cons[name](path, locals);
       html.should.equal('<p>Tobi</p>');
-      calls.should.equal(name === 'atpl' ? 4 : 2);
+      calls.should.equal(expected);
       done();
     });
 
     it('should support caching', function(done){
       var path = 'test/fixtures/' + name + '/user.' + name;
-      var locals = { user: user, cache: true };
+      var str = fs.readFileSync(path).toString();
+      var locals = { user: user, cache: true, str: str };
 
       var html = cons[name](path, locals);
 
@@ -66,7 +76,7 @@ exports.test = function(name) {
 
     it('should support rendering a string', function(done){
       var str = fs.readFileSync('test/fixtures/' + name + '/user.' + name).toString();
-      var locals = { user: user };
+      var locals = { user: user, str: str };
       var html = cons[name].render(str, locals);
       html.should.equal('<p>Tobi</p>');
       done();

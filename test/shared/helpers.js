@@ -21,7 +21,7 @@ exports.test = function(name) {
       it('should support helpers', function(done) {
         var str = fs.readFileSync('test/fixtures/' + name + '/helpers.' + name).toString();
 
-        var locals = { user: user, helpers: { safe: function(object) {
+        var locals = { user: user, str: str, helpers: { safe: function(object) {
           return new handlebars.SafeString(object);
         }}};
 
