@@ -1,8 +1,8 @@
 
-var cons = require('../../')
-  , fs = require('fs')
-  , readFile = fs.readFile
-  , readFileSync = fs.readFileSync;
+var cons = require('../../');
+var fs = require('fs');
+var readFile = fs.readFile;
+var readFileSync = fs.readFileSync;
 
 exports.test = function(name) {
   var user = { name: 'Tobi' };
@@ -16,11 +16,9 @@ exports.test = function(name) {
     it('should support locals', function(done){
       var path = 'test/fixtures/' + name + '/user.' + name;
       var locals = { user: user };
-      cons[name](path, locals, function(err, html){
-        if (err) return done(err);
-        html.should.equal('<p>Tobi</p>');
-        done();
-      });
+      var html = cons[name](path, locals);
+      html.should.equal('<p>Tobi</p>');
+      done();
     });
 
     it('should not cache by default', function(done){
@@ -38,46 +36,40 @@ exports.test = function(name) {
         readFile.apply(this, arguments);
       };
 
-      cons[name](path, locals, function(err, html){
-        if (err) return done(err);
-        html.should.equal('<p>Tobi</p>');
-        cons[name](path, locals, function(err, html){
-          if (err) return done(err);
-          html.should.equal('<p>Tobi</p>');
-          calls.should.equal(name === 'atpl' ? 4 : 2);
-          done();
-        });
-      });
+      var html = cons[name](path, locals);
+      html.should.equal('<p>Tobi</p>');
+      html = cons[name](path, locals);
+      html.should.equal('<p>Tobi</p>');
+      calls.should.equal(name === 'atpl' ? 4 : 2);
+      done();
     });
 
     it('should support caching', function(done){
       var path = 'test/fixtures/' + name + '/user.' + name;
       var locals = { user: user, cache: true };
 
-      cons[name](path, locals, function(err, html){
-        if (err) return done(err);
+      var html = cons[name](path, locals);
 
-        fs.readFile = function(path){
-          done(new Error('fs.readFile() called with ' + path));
-        };
+      fs.readFile = function (path) {
+        done(new Error('fs.readFile() called with ' + path));
+      };
 
-        html.should.equal('<p>Tobi</p>');
-        cons[name](path, locals, function(err, html){
-          if (err) return done(err);
-          html.should.equal('<p>Tobi</p>');
-          done();
-        });
-      });
+      fs.readFileSync = function(path){
+        done(new Error('fs.readFileSync() called with ' + path));
+      };
+
+      html.should.equal('<p>Tobi</p>');
+      html = cons[name](path, locals);
+      html.should.equal('<p>Tobi</p>');
+      done();
     });
 
     it('should support rendering a string', function(done){
       var str = fs.readFileSync('test/fixtures/' + name + '/user.' + name).toString();
       var locals = { user: user };
-      cons[name].render(str, locals, function(err, html){
-        if (err) return done(err);
-        html.should.equal('<p>Tobi</p>');
-        done();
-      });
+      var html = cons[name].render(str, locals);
+      html.should.equal('<p>Tobi</p>');
+      done();
     });
   });
 };
