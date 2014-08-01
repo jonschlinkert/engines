@@ -1,41 +1,46 @@
+var engines = require('../../');
+var fs = require('fs');
+var readFile = fs.readFile;
+var readFileSync = fs.readFileSync;
 
-var cons = require('../../')
-  , fs = require('fs')
-  , readFile = fs.readFile
-  , readFileSync = fs.readFileSync;
+exports.test = function (name) {
+  var user = {
+    name: 'Assemble'
+  };
 
-exports.test = function(name) {
-  var user = { name: 'Tobi' };
-
-  describe(name, function(){
-    afterEach(function(){
+  describe(name, function () {
+    afterEach(function () {
       fs.readFile = readFile;
       fs.readFileSync = readFileSync;
     });
 
-    if (name == 'hogan' || name == 'mustache' || name == 'handlebars' || name == 'ractive') {
-      it('should support partials', function(done){
+    if (name === 'hogan' || name === 'mustache' || name === 'handlebars' || name === 'ractive') {
+      it('should support partials', function (done) {
         var path = 'test/fixtures/' + name + '/partials.' + name;
-        var locals = { user: user, partials: { partial: 'user' } };
-        cons[name](path, locals, function(err, html){
-          if (err) return done(err);
-          html.should.equal('<p>Tobi</p>');
-          done();
-        });
-      });
-    }
-    else {
-      it('should support rendering a partial', function(done){
-        var str = fs.readFileSync('test/fixtures/' + name + '/user_partial.' + name).toString();
-        var locals = { 
+        var str = fs.readFileSync(path).toString();
+        var partial = fs.readFileSync('test/fixtures/' + name + '/user.' + name).toString();
+        var locals = {
           user: user,
-          views: "./test/fixtures/" + name
+          str: str,
+          partials: {
+            partial: partial
+          }
         };
-        cons[name].render(str, locals, function(err, html){
-          if (err) return done(err);
-          html.should.equal('<p>Tobi from partial!</p><p>Tobi</p>');
-          done();
-        });
+        var html = engines[name](path, locals);
+        html.should.equal('<p>Assemble</p>');
+        done();
+      });
+    } else {
+      it('should support rendering a partial', function (done) {
+        var str = fs.readFileSync('test/fixtures/' + name + '/user_partial.' + name).toString();
+        var locals = {
+          user: user,
+          views: "./test/fixtures/" + name,
+          str: str
+        };
+        var html = engines[name].render(str, locals);
+        html.should.equal('<p>Assemble from partial!</p><p>Assemble</p>');
+        done();
       });
     }
   });
