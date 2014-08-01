@@ -11,7 +11,7 @@ $ npm install engines
 ## Supported template engines
 
 - [atpl](https://github.com/soywiz/atpl.js)
-- [dust](https://github.com/akdubya/dustjs) [(website)](http://akdubya.github.com/dustjs/)
+- ~~[dust](https://github.com/akdubya/dustjs) [(website)](http://akdubya.github.com/dustjs/)~~
 - [eco](https://github.com/sstephenson/eco)
 - [ect](https://github.com/baryshev/ect) [(website)](http://ectjs.com/)
 - [ejs](https://github.com/visionmedia/ejs)
@@ -22,11 +22,11 @@ $ npm install engines
 - [jade](https://github.com/visionmedia/jade) [(website)](http://jade-lang.com/)
 - [jazz](https://github.com/shinetech/jazz)
 - [jqtpl](https://github.com/kof/node-jqtpl) [(website)](http://api.jquery.com/category/plugins/templates/)
-- [JUST](https://github.com/baryshev/just)
+- ~~[JUST](https://github.com/baryshev/just)~~
 - [liquor](https://github.com/chjj/liquor)
 - [lodash](https://github.com/bestiejs/lodash) [(website)](http://lodash.com/)
 - [mustache](https://github.com/janl/mustache.js)
-- [QEJS](https://github.com/jepso/QEJS)
+- ~~[QEJS](https://github.com/jepso/QEJS)~~
 - [ractive](https://github.com/Rich-Harris/Ractive)
 - [swig](https://github.com/paularmstrong/swig) [(website)](http://paularmstrong.github.com/swig/)
 - [templayed](http://archan937.github.com/templayed.js/)
