@@ -89,56 +89,36 @@ engines.handlebars('templates/about.hbs', { title: 'About Us' }, function(err, h
 });
 ```
 
-## Assemble > 0.6 example
+## Assemble v0.6.x example
 
 ```js
-var assemble = require('assemble')
-    engines = require('engines');
+var assemble = require('assemble');
+var engines = require('engines');
 
 // assign the handlebars engine to .hbs files
 assemble.engine('hbs', engines.handlebars);
 
-// assign the marked engine to .md files
-assemble.engine('md', engines.marked);
+// assign the remarked engine to .md files
+assemble.engine('md', engines.remarked);
 
-// Run assemble
-assemble.run()
-  .src('templates/*.hbs')
-  .src('content/*.md')
-  .dest()
-
-assemble.build();
+// Configure assemble
+assemble.task('default', function() {
+  assemble.src(['templates/*.hbs', 'content/*.md'])
+    .pipe(assemble.dest('dist'))
+});
 ```
 
 ## Running tests
 
-  Install dev deps:
+Install dev dependencies:
 
-    $ npm install -d
-
+```bash
+npm install -d && mocha
+```
 
 ## License
 
-(The MIT License)
-
-Copyright (c) 2014 Jon Schlinkert &lt;https://github.com/jonschlinkert&gt;
+Copyright (c) 2014 Jon Schlinkert, contributors.
 Copyright (c) 2011 TJ Holowaychuk &lt;tj@vision-media.ca&gt;
 
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Released under the [MIT license](./LICENSE-MIT).

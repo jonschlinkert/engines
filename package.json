@@ -1,11 +1,28 @@
 {
   "name": "engines",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Template engine library for Assemble, based on consolidate.",
   "repository": {
     "type": "git",
     "url": "https://github.com/assemble/engines.git"
   },
+  "bugs": {
+    "url": "https://github.com/assemble/engines/issues"
+  },
+  "author": {
+    "name": "Jon Schlinkert",
+    "url": "https://github.com/jonschlinkert"
+  },
+  "maintainers": [
+    {
+      "name": "Jon Schlinkert",
+      "url": "https://github.com/jonschlinkert"
+    },
+    {
+      "name": "Brian Woodward",
+      "url": "https://github.com/doowb"
+    }
+  ],
   "licenses": [
     {
       "type": "MIT",
@@ -57,12 +74,5 @@
     "template",
     "templates",
     "view"
-  ],
-  "author": {
-    "name": "",
-    "url": ""
-  },
-  "bugs": {
-    "url": ""
-  }
+  ]
 }
