@@ -10,6 +10,8 @@ $ npm install engines
 
 ## Supported template engines
 
+Engines with strikethroughs are not yet supported or need to be updated. Pull requests to update them are welcome.
+
 - [atpl](https://github.com/soywiz/atpl.js)
 - ~~[dust](https://github.com/akdubya/dustjs) [(website)](http://akdubya.github.com/dustjs/)~~
 - [eco](https://github.com/sstephenson/eco)
@@ -91,20 +93,17 @@ engines.handlebars('templates/about.hbs', { title: 'About Us' }, function(err, h
 
 ## Assemble v0.6.x example
 
+Run `npm install assemble/assemble#v0.6.0`, then in your `assemblefile.js`, add the following:
+
 ```js
 var assemble = require('assemble');
-var engines = require('engines');
+var engines = require('..');
 
-// assign the handlebars engine to .hbs files
 assemble.engine('hbs', engines.handlebars);
 
-// assign the remarked engine to .md files
-assemble.engine('md', engines.remarked);
-
-// Configure assemble
 assemble.task('default', function() {
-  assemble.src(['templates/*.hbs', 'content/*.md'])
-    .pipe(assemble.dest('dist'))
+  assemble.src('docs/*.hbs')
+    .pipe(assemble.dest('dist'));
 });
 ```
 

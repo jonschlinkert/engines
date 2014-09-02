@@ -1,7 +1,7 @@
 {
   "name": "engines",
-  "version": "0.3.2",
-  "description": "Template engine library for Assemble, based on consolidate.",
+  "version": "0.3.3",
+  "description": "Template engine library with fast, synchronous rendering, based on consolidate.",
   "repository": {
     "type": "git",
     "url": "https://github.com/assemble/engines.git"
@@ -14,10 +14,6 @@
     "url": "https://github.com/jonschlinkert"
   },
   "maintainers": [
-    {
-      "name": "Jon Schlinkert",
-      "url": "https://github.com/jonschlinkert"
-    },
     {
       "name": "Brian Woodward",
       "url": "https://github.com/doowb"
@@ -67,12 +63,67 @@
     "test": "mocha"
   },
   "keywords": [
+    "assemble",
+    "atpl",
+    "cache",
     "compile",
+    "consolidate",
+    "content",
+    "data",
+    "delimiters",
+    "delims",
+    "docs",
+    "documentation",
+    "dot",
+    "dust",
+    "dustjs-helpers",
+    "dustjs-linkedin",
+    "eco",
+    "ect",
+    "ejs",
     "engine",
+    "engines",
+    "express",
+    "front",
+    "generate",
+    "generator",
+    "gray-matter",
+    "haml-coffee",
+    "hamljs",
+    "handlebars",
+    "hogan.js",
+    "jade",
+    "jazz",
+    "jqtpl",
+    "liquor",
+    "lo-dash",
+    "lodash",
+    "markdown",
+    "matter",
+    "mocha",
+    "mote",
+    "mustache",
+    "noop",
+    "nunjucks",
+    "parse",
+    "parser",
+    "parsers",
+    "pass-through",
     "process",
+    "qejs",
+    "ractive",
     "render",
+    "should",
+    "swig",
     "template",
     "templates",
-    "view"
+    "templayed",
+    "toffee",
+    "underscore",
+    "verb",
+    "view",
+    "walrus",
+    "whiskers",
+    "yaml"
   ]
 }
