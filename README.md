@@ -1,6 +1,6 @@
 # engines
 
-> Template engine enginesolidation library.
+> Template engine library with fast, synchronous rendering, based on consolidate.
 
 ## Installation
 
@@ -12,7 +12,7 @@ $ npm install engines
 
 Engines with strikethroughs are not yet supported or need to be updated. Pull requests to update them are welcome.
 
-- [atpl](https://github.com/soywiz/atpl.js)
+- ~~[atpl](https://github.com/soywiz/atpl.js)~~
 - ~~[dust](https://github.com/akdubya/dustjs) [(website)](http://akdubya.github.com/dustjs/)~~
 - [eco](https://github.com/sstephenson/eco)
 - [ect](https://github.com/baryshev/ect) [(website)](http://ectjs.com/)
