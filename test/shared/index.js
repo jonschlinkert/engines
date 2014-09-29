@@ -89,12 +89,13 @@ exports.test = function (name) {
 
     it('should support rendering a string', function (done) {
       var str = fs.readFileSync('test/fixtures/' + name + '/user.' + name).toString();
-      var locals = {
-        user: user,
-        str: str
-      };
-      var html = engines[name].render(str, locals);
-      html.should.equal('<p>Assemble</p>');
+      var locals = {user: user, str: str};
+
+      if ('renderSync' in engines[name]) {
+        var html = engines[name].renderSync(str, locals);
+        html.should.equal('<p>Assemble</p>');
+      }
+
       done();
     });
   });
