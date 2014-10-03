@@ -72,12 +72,10 @@ function cache(options, compiled) {
     cacheStore[options.filename] = compiled;
     return compiled;
   }
-
   // check cache
   if (options.filename && options.cache) {
     return cacheStore[options.filename];
   }
-
   return compiled;
 }
 
@@ -94,13 +92,10 @@ function cache(options, compiled) {
 
 function store(path, options) {
   var str = templates[path];
-
   var cached = options.cache && str && typeof str === 'string';
 
   // cached (only if cached is a string and not a compiled template function)
-  if (cached) {
-    return str;
-  }
+  if (cached) return str;
 
   // store
   str = options.str;
@@ -137,7 +132,6 @@ function fromStringRenderer(name) {
 }
 
 
-
 function waitFor() {
   var rendered = '';
   var error = null;
@@ -152,19 +146,13 @@ function waitFor() {
 
   // use all the arguments passed in
   var args = [].slice.call(arguments);
-
-  // remove the first argument
   var caller = args.shift();
   var fn = args.shift();
-
-  // add the callback as the last argument
   args.push(cb);
 
   if (fn) {
     try {
-      // call the function
       fn.apply(caller, args);
-      var i = 0;
       while(!done) {
         // wait until it returns;
       }
@@ -172,9 +160,7 @@ function waitFor() {
       done = true;
       throw err;
     }
-    if (error) {
-      throw new Error(error);
-    }
+    if (error) throw new Error(error);
     return rendered;
   }
   return;

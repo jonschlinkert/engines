@@ -41,9 +41,9 @@ __NOTE__: you must still install the engines you wish to use, add them to your p
 
 ## API
 
-All templates supported by this library may be rendered using the signature `(path[, context], callback)` as shown below, which is the same signature that Assemble supports, so any of these engines may be used within Assemble.
+All templates supported by this library may be rendered using the signature `(path[, context], callback)` as shown below, which is the same signature that Assemble and express support, so any of these engines may be used within Assemble or express.
 
-__NOTE__: All this example code uses `engines.handlebars` for the [Handlebars](handlebarsjs.com) template engine. Replace handlebars with whatever template engine you prefer. For example, use `engines.hogan` for hogan.js, `engines.jade` for jade, etc.
+__NOTE__: All of the examples use `engines.handlebars` for the [Handlebars](handlebarsjs.com) template engine. Replace handlebars with whatever template engine you prefer. For example, use `engines.hogan` for hogan.js, `engines.jade` for jade, etc.
 
 Run `console.log(engines)` for the full list of identifiers.
 
@@ -81,7 +81,7 @@ engines[name]('templates/about.hbs', { title: 'About Us' }, function(err, html) 
 
 ## Caching
 
-To enable caching pass `{ cache: true }`. Engines _may_ use this option to cache things reading the file contents, like compiled `Function`s etc. Engines which do _not_ support this may simply ignore it. All engines that **engines** implements I/O for will cache the file contents, this is ideal for production environments.
+To enable caching pass `{ cache: true }`. Engines _may_ use this option to cache things reading the file contents, like compiled `Function`s etc. Engines which do _not_ support this may simply ignore it. All engines that **engines** implements I/O for will cache the file contents, as this is ideal for production environments.
 
 ```js
 var engines = require('engines');
