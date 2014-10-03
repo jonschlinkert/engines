@@ -32,8 +32,10 @@ exports.test = function (name) {
           }
         };
 
-        var html = engines[name].render(str, locals);
-        html.should.equal('<strong>Assemble</strong>');
+        if (engines[name].hasOwnProperty('renderSync')) {
+          var html = engines[name].renderSync(str, locals);
+          html.should.equal('<strong>Assemble</strong>');
+        }
         done();
       });
     }

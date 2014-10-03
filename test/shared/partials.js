@@ -40,7 +40,7 @@ exports.test = function (name) {
           views: "./test/fixtures/" + name,
           str: str
         };
-        var html = engines[name].render(str, locals);
+        var html = engines[name].renderSync(str, locals);
         html.should.equal('<p>Assemble from partial!</p><p>Assemble</p>');
         done();
       });
